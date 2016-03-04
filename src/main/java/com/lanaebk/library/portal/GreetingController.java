@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by Lanae on 3/3/2016.
  */
-
+// making a change to test git push
 @RestController
 public class GreetingController
 {
