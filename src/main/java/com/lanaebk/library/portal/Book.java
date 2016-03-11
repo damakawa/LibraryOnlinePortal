@@ -1,10 +1,14 @@
 package com.lanaebk.library.portal;
 
-/**
+/*
  * Created by Lanae on 3/2/2016.
- */
+*/
 
+
+import com.lanaebk.library.repositories.BookRepository;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 public class Book
 {
@@ -12,16 +16,79 @@ public class Book
     private String id;
 
     private String title;
-    private String authorLastName;
-    private String authorFirstName;
+    private String authorLName;
+    private String authorFName;
+    private String publisher;
+    private Integer yearOfPublication;
+
 
     public Book() {}
 
-    public Book(String title, String authorLastName, String authorFirstName)
+    public Book(String title, String authorLName, String authorFName)
     {
         this.title = title;
-        this.authorLastName = authorLastName;
-        this.authorFirstName = authorFirstName;
+        this.authorLName = authorLName;
+        this.authorFName = authorFName;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public String getAuthorLName()
+    {
+        return authorLName;
+    }
+
+    public void setAuthorLName(String authorLName)
+    {
+        this.authorLName = authorLName;
+    }
+
+    public String getAuthorFName()
+    {
+        return authorFName;
+    }
+
+    public void setAuthorFName(String authorFName)
+    {
+        this.authorFName = authorFName;
+    }
+
+    public String getPublisher()
+    {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher)
+    {
+        this.publisher = publisher;
+    }
+
+    public Integer getYearOfPublication()
+    {
+       return yearOfPublication;
+    }
+
+    public void setYearOfPublication(Integer yearOfPublication)
+    {
+        this.yearOfPublication = yearOfPublication;
     }
 
     @Override
@@ -29,6 +96,6 @@ public class Book
     {
         return String.format(
                 "Book[id='%s', title='%s', authorLastName='%s', authorFirstName='%s']",
-                id, title, authorLastName, authorFirstName);
+                id, title, authorLName, authorFName);
     }
 }
