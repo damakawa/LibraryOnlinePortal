@@ -8,6 +8,7 @@ package com.lanaebk.library.portal;
 import com.lanaebk.library.repositories.BookRepository;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class Book
@@ -19,7 +20,7 @@ public class Book
     private String authorLName;
     private String authorFName;
     private String publisher;
-    private Integer yearOfPublication;
+    private String yearOfPublication;
 
 
     public Book() {}
@@ -81,12 +82,12 @@ public class Book
         this.publisher = publisher;
     }
 
-    public Integer getYearOfPublication()
+    public String getYearOfPublication()
     {
        return yearOfPublication;
     }
 
-    public void setYearOfPublication(Integer yearOfPublication)
+    public void setYearOfPublication(String yearOfPublication)
     {
         this.yearOfPublication = yearOfPublication;
     }

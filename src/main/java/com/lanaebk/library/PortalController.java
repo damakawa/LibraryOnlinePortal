@@ -19,19 +19,19 @@ public class PortalController
     BookRepository bookRepo;
 
     @RequestMapping("/query")
-    public String query(@RequestParam(value = "title", required = false) String title,
-                        @RequestParam(value = "authorLName", required = false) String authorLName,
+    public String query(@RequestParam(value = "title", required = true) String title,
+                        /*@RequestParam(value = "authorLName", required = false) String authorLName,
                         @RequestParam(value = "authorFName", required = false) String authorFName,
                         @RequestParam(value = "publisher", required = false) String publisher,
-                        @RequestParam(value = "yearOfPublication", required = false) Integer yearOfPublication,
+                        @RequestParam(value = "yearOfPublication", required = false) String yearOfPublication,*/
                         Model model)
     {
         Book book = bookRepo.findByTitle(title);
-        model.addAttribute("title", title);
-        model.addAttribute("authorLName", authorLName);
-        model.addAttribute("authorFName", authorFName);
-        model.addAttribute("publisher", publisher);
-        model.addAttribute("yearOfPublication", yearOfPublication);
+        model.addAttribute("title", book.getTitle());
+        model.addAttribute("authorLName", book.getAuthorLName());
+        model.addAttribute("authorFName", book.getAuthorFName());
+        model.addAttribute("publisher", book.getPublisher());
+        model.addAttribute("yearOfPublication", book.getYearOfPublication());
 
         return "query";
     }
