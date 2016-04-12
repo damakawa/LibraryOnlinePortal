@@ -1,14 +1,8 @@
-content:
-  staticDirectory: 'classpath:/'
-
-logging:
-  level:
-    org.springframework: 'INFO'
-
 spring:
   data:
-      mongodb.host: ds015478.mlab.com
-      mongodb.port: 15478
-      mongodb.database: library385
-      mongodb.username: caprica6
-      mongodb.password: baltar
+    mongodb:
+      host: ds015478.mlab.com
+      port: 15478
+      username: caprica6
+      password: baltar
+

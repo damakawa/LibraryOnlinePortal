@@ -5,22 +5,38 @@ package com.lanaebk.library;
  */
 import com.lanaebk.library.portal.Book;
 import com.lanaebk.library.repositories.BookRepository;
-import com.lanaebk.library.config.SecurityConfig;
-import com.lanaebk.library.config.SecurityWebApplicationInitializer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Configuration
-@ComponentScan
-@EnableMongoRepositories
-@EnableAutoConfiguration
-public class Application
+@SpringBootApplication
+public class Application implements CommandLineRunner
 {
-    public static void main(String[] args) throws Exception
-    {
+    @Autowired
+    private BookRepository bookRepo;
+
+    public static void main (String[] args ) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String...args) throws Exception {
+
+        // fetch all entries in book collection
+        System.out.println("Books found with findAll():");
+        System.out.println("---------------------------");
+        for (Book book : bookRepo.findAll())
+        {
+            System.out.println(book);
+        }
+
+        // fetch book by title
+        System.out.println("Books found with findByTitle('Kushiel's Dart'):");
+        System.out.println("-----------------------------------------------");
+        for (Book book : bookRepo.findByTitle("Kushiel's Dart"))
+        {
+            System.out.println(book);
+        }
     }
 }
