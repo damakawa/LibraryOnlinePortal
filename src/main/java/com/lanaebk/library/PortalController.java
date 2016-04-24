@@ -1,52 +1,67 @@
-/*
 package com.lanaebk.library;
 
-import com.lanaebk.library.portal.Book;
-import com.lanaebk.library.repositories.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lanaebk.library.config.Mongo;
+import com.lanaebk.library.portal.Books;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 
-*/
 /*
  * Created by Lanae on 3/3/2016.
-*//*
+*/
 
 
 @Controller
 public class PortalController
 {
-    @Autowired
-    BookRepository bookRepo;
+/*    @Autowired
+    BooksRepository bookRepo;*/
 
-    @RequestMapping("/query")
-    public String query(@RequestParam(value = "title", required = true) String title,
-                        */
-/*@RequestParam(value = "authorLName", required = false) String authorLName,
-                        @RequestParam(value = "authorFName", required = false) String authorFName,
-                        @RequestParam(value = "publisher", required = false) String publisher,
-                        @RequestParam(value = "yearOfPublication", required = false) String yearOfPublication,*//*
-
-                        Model model)
+    @RequestMapping(value="/test", method = RequestMethod.GET)
+    @ResponseBody
+    public String sayHello()
     {
-        List<Book> books = bookRepo.findByTitle(title);
-        model.addAttribute("title", books.getTitle());
-        model.addAttribute("authorLName", books.getAuthorLName());
-        model.addAttribute("authorFName", books.getAuthorFName());
-        model.addAttribute("publisher", books.getPublisher());
-        model.addAttribute("yearOfPublication", books.getYearOfPublication());
-
-        return "query";
+        return "Hello";
     }
 
+/*    @RequestMapping(value = "/title/{title}", method = RequestMethod.GET)
+    @ResponseBody
+    public DBObject getBookByTitle(@PathVariable("title") String title) throws UnknownHostException
+    {
+        Mongo mongo = new Mongo();
+        DBCollection books = mongo.getCollection("books");
+        DBObject firstBook = books.findOne();
+        return firstBook;
+    }*/
+
+    @RequestMapping(value="/title/{title}", method = RequestMethod.GET)
+    @ResponseBody
+    public Books findBookByTitle(@PathVariable("title") String title)
+    {
+        Books book = new Books();
+        ArrayList<Books> bookColl = new ArrayList<Books>();
+        Books kd = new Books("Kushiel's Dart", "Carey", "Jacqueline");
+        Books nine84 = new Books("1984", "Orwell", "George");
+        Books fool = new Books("Fool", "Moore", "Christopher");
+        bookColl.add(kd);
+        bookColl.add(nine84);
+        bookColl.add(fool);
+
+        for (int i = 0; i < bookColl.size(); i++)
+        {
+            if (title.equals(bookColl.get(i).getTitle()))
+            {
+                book = bookColl.get(i);
+            }
+        }
+        return book;
+    }
 }
 
 
-
-
-//making a change to test out git push functionality
-*/

@@ -5,17 +5,16 @@ package com.lanaebk.library.portal;
 */
 
 
-import com.lanaebk.library.repositories.BookRepository;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
-public class Book
+//@Document
+public class Books
 {
-    @Id
+    //@Id
     private String id;
-
     private String title;
     private String authorLName;
     private String authorFName;
@@ -32,9 +31,9 @@ public class Book
     private double owedFine;
     private double paidFine;
 
-    public Book() {}
+    public Books() {}
 
-    public Book(String title, String authorLName, String authorFName)
+    public Books(String title, String authorLName, String authorFName)
     {
         this.title = title;
         this.authorLName = authorLName;
@@ -145,7 +144,7 @@ public class Book
     public String toString()
     {
         return String.format(
-                "Book[id='%s', title='%s', authorLastName='%s', authorFirstName='%s']",
+                "Books[id='%s', title='%s', authorLastName='%s', authorFirstName='%s']",
                 id, title, authorLName, authorFName);
     }
 }
