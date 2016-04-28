@@ -4,15 +4,10 @@ package com.lanaebk.library.portal;
  * Created by JiwenZhang on 16/4/28.
  */
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
-
 public class Musics {
     //ID
     private String id;
-    private String title;
+    private String album;
     private String singerFName;
     private String singerLName;
     private String composerFName;
@@ -30,9 +25,9 @@ public class Musics {
 
     public Musics() {}
 
-    public Musics(String title, String singerLName, String singerFName)
+    public Musics(String album, String singerLName, String singerFName)
     {
-        this.title = title;
+        this.album = album;
         this.singerLName = singerLName;
         this.singerFName = singerFName;
     }
@@ -47,14 +42,14 @@ public class Musics {
         this.id = id;
     }
 
-    public String getTitle()
+    public String getAlbum()
     {
-        return title;
+        return album;
     }
 
-    public void setTitle(String title)
+    public void setAlbum(String album)
     {
-        this.title = title;
+        this.album = album;
     }
 
     public String getSingerLName()
@@ -166,7 +161,7 @@ public class Musics {
     public String toString()
     {
         return String.format(
-                "Musics[id='%s', title='%s', singerLastName='%s', singerFirstName='%s']",
-                id, title, singerLName, singerFName);
+                "Musics[id='%s', album='%s', singerLastName='%s', singerFirstName='%s']",
+                id, album, singerLName, singerFName);
     }
 }

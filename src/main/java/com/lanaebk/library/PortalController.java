@@ -2,6 +2,8 @@ package com.lanaebk.library;
 
 import com.lanaebk.library.config.Mongo;
 import com.lanaebk.library.portal.Books;
+import com.lanaebk.library.portal.Movies;
+import com.lanaebk.library.portal.Musics;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoCollection;
@@ -30,17 +32,7 @@ public class PortalController
         return "Hello";
     }
 
-/*    @RequestMapping(value = "/title/{title}", method = RequestMethod.GET)
-    @ResponseBody
-    public DBObject getBookByTitle(@PathVariable("title") String title) throws UnknownHostException
-    {
-        Mongo mongo = new Mongo();
-        DBCollection books = mongo.getCollection("books");
-        DBObject firstBook = books.findOne();
-        return firstBook;
-    }*/
-
-    @RequestMapping(value="/title/{title}", method = RequestMethod.GET)
+    @RequestMapping(value="books/title/{title}", method = RequestMethod.GET)
     @ResponseBody
     public Books findBookByTitle(@PathVariable("title") String title)
     {
@@ -61,6 +53,52 @@ public class PortalController
             }
         }
         return book;
+    }
+
+    @RequestMapping(value="movies/title/{title}", method = RequestMethod.GET)
+    @ResponseBody
+    public Movies findMovieByTitle(@PathVariable("title") String title)
+    {
+        Movies movie = new Movies();
+        ArrayList<Movies> movieColl = new ArrayList<Movies>();
+        Movies hunger = new Movies("The Hunger Games", "Ross", "Gary");
+        Movies v = new Movies("V for Vendetta", "McTeigue", "James");
+        Movies fight = new Movies("Fight Club", "Fincher", "David");
+        movieColl.add(hunger);
+        movieColl.add(v);
+        movieColl.add(fight);
+
+        for (int i = 0; i < movieColl.size(); i++)
+        {
+            if (title.equals(movieColl.get(i).getTitle()))
+            {
+                movie = movieColl.get(i);
+            }
+        }
+        return movie;
+    }
+
+    @RequestMapping(value="music/album/{album}", method = RequestMethod.GET)
+    @ResponseBody
+    public Musics findByAlbum(@PathVariable("album") String album)
+    {
+        Musics music = new Musics();
+        ArrayList<Musics> musicColl = new ArrayList<Musics>();
+        Musics hunger = new Musics("Emily's D+Evolution", "Spalding", "Esperanza");
+        Musics v = new Musics("Fever to Tell", "Yeah Yeah Yeahs", "");
+        Musics fight = new Musics("Phase", "Garratt", "Jack");
+        musicColl.add(hunger);
+        musicColl.add(v);
+        musicColl.add(fight);
+
+        for (int i = 0; i < musicColl.size(); i++)
+        {
+            if (album.equals(musicColl.get(i).getAlbum()))
+            {
+                music = musicColl.get(i);
+            }
+        }
+        return music;
     }
 }
 
