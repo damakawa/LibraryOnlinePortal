@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style type="text/css">
+
+header {text-align:center;}
+section {text-align:center;}
+</style>
+
+    <!-- W3 CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+<ul class="w3-navbar w3-border w3-light-grey">
+    <li><a class="w3-hover-red"  href="userhome.html">Home</a></li>
+    <li><a class="w3-hover-blue" href="aboutus.html">About Us</a></li>
+    <li><a class="w3-hover-green" href="contactus.html">Contact Us</a></li>
+    <li><a class="w3-hover-teal" href="help.html">Help</a></li>
+    <li><a align ="right" class="w3-hover-khaki" href="#">Log Out</a></li>
+</ul>
+
+<br>
+<header>
+  <span class="w3-tag w3-xxlarge w3-padding w3-blue  w3-round-large w3-center">
+Welcome, User!
+</span>
+</header>
+<br><br>
+<section>
+    <form>
+        <input class="w3-input w3-border w3-round" type="text" name="search" placeholder="Search..">
+    </form>
+    <button class="w3-btn w3-black" href="search.html">Search</button>
+    <div class="w3-dropdown-hover">
+        <button class="w3-btn w3-black">Adv. Search</button>
+        <div class="w3-dropdown-content w3-border">
+            <a href="#">Author</a>
+            <a href="#">Title</a>
+            <a href="#">Year Released</a>
+        </div>
+    </div>
+    <input id="" class="w3-check" type="checkbox" checked="">
+    <label class="w3-validate">Books</label>
+    <input id="" class="w3-check" type="checkbox" checked="checked">
+    <label class="w3-validate">Movies</label>
+    <input id="" class="w3-check" type="checkbox" checked="checked">
+    <label class="w3-validate">Magazines</label>
+    <input id="" class="w3-check" type="checkbox" checked="checked">
+    <label class="w3-validate">Articles</label>
+    <br><br>
+</section>
+
+
+<h3 class="w3-text-blue">Recent Activity</h3>
+<ul class="w3-navbar w3-black">
+    <li><a href="#" onclick="openItem('Books')">Books</a></li>
+    <li><a href="#" onclick="openItem('Movies')">Movies</a></li>
+    <li><a href="#" onclick="openItem('Magazines')">Magazines</a></li>
+    <li><a href="#" onclick="openItem('Articles')">Articles</a></li>
+</ul>
+
+<div id="Books" class="w3-container item">
+    <h2>Books</h2>
+    <button class="w3-btn w3-green">Renew</button>
+    <button class="w3-btn w3-green">Return</button>
+</div>
+
+<div id="Movies" class="w3-container item">
+    <h2>Movies</h2>
+    <button class="w3-btn w3-green">Renew</button>
+    <button class="w3-btn w3-green">Return</button>
+</div>
+
+<div id="Magazines" class="w3-container item">
+    <h2>Magazines</h2>
+    <button class="w3-btn w3-green">Renew</button>
+    <button class="w3-btn w3-green">Return</button>
+</div>
+
+<div id="Articles" class="w3-container item">
+    <h2>Articles</h2>
+    <button class="w3-btn w3-green">Renew</button>
+    <button class="w3-btn w3-green">Return</button>
+</div>
+
+<script>
+openItem("Books")
+function openItem(itemName) {
+    var i;
+    var x = document.getElementsByClassName("item");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    document.getElementById(itemName).style.display = "block";
+}
+</script>
+
+
+</body>
+
+</body>
+</html>
